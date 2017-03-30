@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type = "text/css">
+
+    .background-wrap{
+        position: fixed;
+        z-index: -1000;
+        width: 100%;
+        height:75%;
+        overflow:hidden;
+        top:0;
+        left: 0;
+
+    }
+    #video-bg-elem{
+        position: absolute;
+        top:0;
+        left:0;
+        min-height:75%;
+        min-width: 100%;}
+        .text-centre{
+            width:1024px;
+            height: 52px;
+
+        }
+        h1 {
+            color: white;
+    display: block;
+    font-size: 2em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+
+    </style>
+
+</head>
+<script>
+    function Ser(val)
+    {
+        var doctor = ["alex", "alison", "singh", "khatri", "javcx", "abjcd"];
+        var link   = ["alex", "alison", "singh", "khatri", "javcx", "abjcd"]
+        console.log(val);
+        var doctorDisplay = new Array(6);
+        var doctorLink = new Array(6);
+        var j=0;
+
+       //var HTML = "<table  class=\"table table-hover\">";
+       HTML = "<div class=\"list-group\" >"
+        for (var i = 0; i < 6; i++)
+        {
+            var status = doctor[i].includes(val);
+            if (status)
+                {
+                    doctorDisplay[j]= doctor[i];
+                    doctorLink[j]=link[i];
+
+                    console.log("this is array" + doctorDisplay[i]);
+                   /* HTML +="<a href='"+doctorLink[j]+"'";
+                    HTML +="<tr>"+doctorDisplay[j]+"</tr>";
+                    HTML += "</a></br>";*/
+                    HTML +="<a href='"+doctorLink[j]+"' class=\"list-group-item\">"+doctorDisplay[j]+"</a>";
+                    j++;
+                }
+        }
+        HTML += "</div>";
+        if(val.length== 0)
+        {
+            document.getElementById("outputDiv").innerHTML = "";
+
+        }
+        else
+        {
+            document.getElementById("outputDiv").innerHTML = HTML;
+        }
+    }
+
+
+
+</script>
+ </head>
+
+ <body>
+    <div class = "background-wrap">
+        <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
+
+
+            <source src="https://d26ua9paks4zq.cloudfront.net/d8/7b/d61c1d70479cb95c562841900e3e/video-file-hg3-homepage-video-2.mp4"   type="video/mp4">
+                </video>
+    </div>
+                <h1 style="text-align: center; margin-top: 100px"> Better Health Begins Here</h1>
+                    <div style="align:center;" class="ui search">
+
+                        <div  style="padding-left:150px; padding-top:150px;">
+                            <input class="prompt" size="134px" style="padding:10px;" type="text" id="search" onkeyup="Ser(this.value)" placeholder="Search Doctors,Hospitals...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+
+                <div class="col-sm-9" style="margin-left:134px; margin-top:0px" id="outputDiv">
+
+                </div>
+
+</body>
+</html>
